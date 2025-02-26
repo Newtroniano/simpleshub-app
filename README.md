@@ -51,7 +51,7 @@ A aplicação processa documentos PDF e extrai CPFs que seguem o formato padrão
 
 ## Configuração das Variáveis de Ambiente
 
-Tanto para rodar com Docker quanto sem Docker, é necessário configurar as variáveis de ambiente no arquivo `.env`, seguindo este exemplo:
+Tanto para rodar com Docker quanto sem Docker, é necessário configurar as variáveis de ambiente no arquivo `.env` na raiz do projeto, seguindo este exemplo:
 
 ```
 FIREBASEURL='https://projeto_fire_base.firebaseio.com/'
