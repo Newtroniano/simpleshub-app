@@ -153,8 +153,11 @@ frontend/
 ├── src/
 │   ├── assets/
 │   ├── components/
+|   |    ├── UploadForm.vue
 │   ├── views/
+|   |    ├── HomeView.vue
 │   ├── services/
+|   |    ├── ApiService.vue
 │   ├── App.vue
 │   ├── main.js
 ├── public/
