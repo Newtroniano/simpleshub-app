@@ -161,6 +161,7 @@ frontend/
 │   ├── App.vue
 │   ├── main.js
 ├── public/
+|   |    ├── index.html
 ├── Dockerfile
 ├── package.json
 ├── vite.config.js
