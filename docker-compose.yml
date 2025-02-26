@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend  # O diretório de contexto para o backend
+      dockerfile: Dockerfile  # Caminho relativo ao contexto
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=development
+      - FIREBASEURL=${FIREBASEURL}  # Referenciando a variável do .env
+      - FIREBASE_SERVICE_ACCOUNT=${FIREBASE_SERVICE_ACCOUNT}  # Referenciando a variável do .env
+    depends_on:
+      - firebase
+
+  frontend:
+    build:
+      context: ./frontend  # O diretório de contexto para o frontend
+      dockerfile: Dockerfile  # Caminho relativo ao contexto
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+
+  firebase:
+    image: google/cloud-sdk:latest
+    command: >
+      bash -c "gcloud emulators firestore start --host-port=0.0.0.0:8085"
+    ports:
+      - "8085:8085"
