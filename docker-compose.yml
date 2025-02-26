@@ -2,27 +2,29 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend  # O diretório de contexto para o backend
-      dockerfile: Dockerfile  # Caminho relativo ao contexto
+      context: ./backend  
+      dockerfile: Dockerfile  
     ports:
       - "3000:3000"
     volumes:
       - ./backend:/app
+      - /app/node_modules  
     environment:
       - NODE_ENV=development
-      - FIREBASEURL=${FIREBASEURL}  # Referenciando a variável do .env
-      - FIREBASE_SERVICE_ACCOUNT=${FIREBASE_SERVICE_ACCOUNT}  # Referenciando a variável do .env
+      - FIREBASEURL=${FIREBASEURL}  
+      - FIREBASE_SERVICE_ACCOUNT=${FIREBASE_SERVICE_ACCOUNT}  
     depends_on:
       - firebase
 
   frontend:
     build:
-      context: ./frontend  # O diretório de contexto para o frontend
-      dockerfile: Dockerfile  # Caminho relativo ao contexto
+      context: ./frontend  
+      dockerfile: Dockerfile  
     ports:
       - "8080:8080"
     volumes:
       - ./frontend:/app
+      - /app/node_modules  
     environment:
       - NODE_ENV=development
     depends_on:
