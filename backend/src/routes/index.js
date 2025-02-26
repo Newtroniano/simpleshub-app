@@ -7,7 +7,7 @@ const cpfRoutes = require('./cpfRoutes');
 
 // Usa as rotas
 router.use('/', uploadRoutes); // Todas as rotas de upload começam com /upload
-router.use('/cpfs', cpfRoutes);     // Todas as rotas de CPFs começam com /cpfs
+router.use('/', cpfRoutes);     // Todas as rotas de CPFs começam com /cpfs
 
 // Rota de exemplo
 router.get('/', (req, res) => {
