@@ -1,31 +1,28 @@
 <template>
   <div>
-    <b-form @submit.prevent="uploadFile">
-      <b-form-group label="Selecione um arquivo PDF:" label-for="file-input">
-        <b-form-file
-          id="file-input"
-          v-model="file"
-          :state="Boolean(file)"
-          placeholder="Escolha um arquivo ou arraste aqui..."
-          drop-placeholder="Arraste o arquivo aqui..."
-          accept=".pdf"
-          required
-        ></b-form-file>
-      </b-form-group>
+  
+    <input
+      type="file"
+      @change="onFileChanged($event)"
+      accept="application/pdf"
+      capture
+      class="form-control mb-3" 
+    />
 
-      <b-button
-        type="submit"
-        variant="primary"
-        :disabled="!file"
-        class="upload-button"
-      >
-        <b-icon-upload></b-icon-upload> Upload
-      </b-button>
 
-      <b-alert v-if="error" variant="danger" dismissible class="mt-3">
-        {{ error }}
-      </b-alert>
-    </b-form>
+    <button 
+      @click="uploadFile" 
+      :disabled="!file" 
+      class="btn btn-success btn-lg w-100"  
+    >
+      <b-icon-upload></b-icon-upload> Upload
+    </button>
+    
+    
+    <p v-if="error" class="text-danger mt-3">{{ error }}</p>
+
+  
+    <p v-if="successMessage" class="text-success mt-3">{{ successMessage }}</p>
   </div>
 </template>
 
@@ -37,12 +34,21 @@ export default {
     return {
       file: null,
       error: '',
+      successMessage: '',
     };
   },
   methods: {
+    onFileChanged(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.file = file;
+        this.error = '';
+      }
+    },
+    
     async uploadFile() {
       if (!this.file) {
-        this.error = 'Por favor, selecione um arquivo PDF.';
+        this.error = 'Por favor, selecione um arquivo.';
         return;
       }
 
@@ -51,10 +57,15 @@ export default {
 
       try {
         const response = await ApiService.uploadPdf(formData);
-        this.$emit('cpfs-extracted', response.data.cpfs);
+        this.successMessage = response.msg;
         this.error = '';
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+
       } catch (error) {
-        this.error = 'Erro ao processar o PDF. Tente novamente.';
+        this.error = 'Erro ao enviar o arquivo.';
         console.error(error);
       }
     },
@@ -64,13 +75,24 @@ export default {
 
 <style scoped>
 
-.upload-button {
-  margin-top: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
-.upload-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.form-control {
+  border-radius: 0.375rem;
+  box-shadow: none;
 }
 </style>

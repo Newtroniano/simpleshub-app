@@ -1,0 +1,11 @@
+FIREBASEURL='https://projetofirebase.com/'
+FIREBASE_SERVICE_ACCOUNT='{
+    FIREBASE_PROJECT_ID=simpleshub-e731d
+    FIREBASE_PRIVATE_KEY_ID=seu-private-key-id
+    FIREBASE_PRIVATE_KEY="seu-private-key-aqui"
+    FIREBASE_CLIENT_EMAIL=seu-email@firebase-adminsdk.com
+    FIREBASE_CLIENT_ID=seu-client-id
+    FIREBASE_AUTH_URI=https://accounts.google.com/o/oauth2/auth
+    FIREBASE_TOKEN_URI=https://oauth2.googleapis.com/token
+    FIREBASE_DATABASE_URL=https://simpleshub-e731d.firebaseio.com
+}'

@@ -3,3 +3,6 @@ backend/package-lock.json
 backend/src/repositories/simpleshub.json
 backend/node_modules
 backend/uploads/
+node_modules
+frontend/node_modules
+uploads

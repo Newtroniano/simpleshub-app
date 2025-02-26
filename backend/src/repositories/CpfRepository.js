@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('./simpleshub.json'); 
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT); 
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -11,7 +11,7 @@ const cpfsRef = db.ref('cpfs');
 
 class CpfRepository {
   static async saveCpf(cpf) {
-    await cpfsRef.push({ cpf, timestamp: Date.now() });
+    await cpfsRef.push({ cpf, timestamp: Date.now()});
   }
 
   static async getAllCpfs() {

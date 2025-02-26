@@ -26,14 +26,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2); 
-  min-height: 100vh;
-  padding: 20px;
 }
 
 .navbar {
   padding: 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2); 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
