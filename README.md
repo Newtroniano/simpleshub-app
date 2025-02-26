@@ -76,7 +76,7 @@ FIREBASE_SERVICE_ACCOUNT='{
 ### 1. Clone o Repositório
 
 ```
-git clone https://github.com/seu-usuario/simpleshub-test.git
+git clone https://github.com/Newtroniano/simpleshub-app.git
 cd simpleshub-test
 ```
 
