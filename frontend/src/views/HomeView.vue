@@ -18,30 +18,31 @@
 
       <b-row class="mt-4">
         <b-col md="6" offset-md="3">
-          <b-card title="CPFs Encontrados" class="shadow-lg border-0" v-if="cpfs.length > 0">
+          <b-card title="CPFs Encontrados do Real Time Data Base Fire Base" class="shadow-lg border-0" v-if="cpfs.length > 0">
             <b-list-group>
               <b-list-group-item
-                v-for="cpf in cpfs"
-                :key="cpf"
-                class="d-flex justify-content-between align-items-center"
-              >
-                {{ cpf }}
-                <b-badge variant="primary" pill>{{ cpf.length }}</b-badge>
+                    v-for="cpf in cpfs"
+                    :key="cpf"
+                    class="d-flex justify-content-between align-items-center"
+                    >
+                    {{ cpf }}
+                    <b-badge variant="primary" pill>{{ cpf.length }} caracteres (tamanho do CPF)</b-badge>
               </b-list-group-item>
+
             </b-list-group>
           </b-card>
 
-          <!-- Mensagem de carregamento -->
+          
           <b-alert variant="info" show v-if="loading">
             <b-spinner small></b-spinner> Carregando CPFs...
           </b-alert>
 
-          <!-- Mensagem de erro -->
+         
           <b-alert variant="danger" show v-if="error">
             Erro ao carregar CPFs. Tente novamente mais tarde.
           </b-alert>
 
-          <!-- Mensagem de lista vazia -->
+          
           <b-alert variant="warning" show v-if="!loading && cpfs.length === 0">
             Nenhum CPF encontrado.
           </b-alert>

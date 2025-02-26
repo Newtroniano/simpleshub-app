@@ -57,7 +57,7 @@ export default {
 
       try {
         const response = await ApiService.uploadPdf(formData);
-        this.successMessage = response.msg;
+        this.successMessage = response.data.msg;
         this.error = '';
 
         setTimeout(() => {
